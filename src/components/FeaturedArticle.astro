@@ -1,0 +1,118 @@
+---
+import { getCollection } from 'astro:content';
+
+const articles = await getCollection('articles');
+articles.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const latest = articles[0];
+---
+
+<section class="section featured" id="blog">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Правен блог</h2>
+      <div class="gold-accent"></div>
+      <p class="section-subtitle">Полезни статии и правни анализи от нашия екип</p>
+    </div>
+    {latest ? (
+      <a href={`/statia/${latest.slug}/`} class="featured-card">
+        <span class="featured-badge">Полезна статия</span>
+        <h3 class="featured-title">{latest.data.title}</h3>
+        <p class="featured-desc">{latest.data.description}</p>
+        <span class="featured-date">
+          {new Date(latest.data.pubDate).toLocaleDateString('bg-BG', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </span>
+        <span class="featured-link">Прочети повече &rarr;</span>
+      </a>
+    ) : (
+      <p class="featured-empty">Няма публикувани статии все още.</p>
+    )}
+  </div>
+</section>
+
+<style>
+  .featured {
+    background: var(--color-navy);
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .featured .section-title {
+    color: var(--color-white);
+  }
+
+  .featured .section-subtitle {
+    color: var(--color-cream);
+    opacity: 0.8;
+  }
+
+  .featured-card {
+    display: block;
+    background: var(--color-white);
+    border-radius: 8px;
+    padding: 2.5rem;
+    text-decoration: none;
+    color: var(--color-text);
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    max-width: 800px;
+  }
+
+  .featured-card:hover {
+    border-color: var(--color-gold);
+    box-shadow: 0 4px 24px rgba(201, 168, 76, 0.2);
+    transform: translateY(-3px);
+  }
+
+  .featured-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-gold-dark);
+    margin-bottom: 0.75rem;
+    font-family: var(--font-body);
+  }
+
+  .featured-title {
+    font-size: 1.375rem;
+    color: var(--color-navy);
+    margin-bottom: 0.75rem;
+  }
+
+  .featured-desc {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  .featured-date {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+  }
+
+  .featured-link {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-gold-dark);
+    transition: color 0.2s;
+  }
+
+  .featured-card:hover .featured-link {
+    color: var(--color-gold);
+  }
+
+  .featured-empty {
+    color: var(--color-cream);
+    opacity: 0.6;
+  }
+</style>
