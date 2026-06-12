@@ -15,7 +15,9 @@
   --font-body: 'PT Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   --max-width: 1200px;
+  --topbar-height: 36px;
   --nav-height: 64px;
+  --bottombar-height: 44px;
   --section-padding: 5rem 1.5rem;
 }
 
@@ -37,6 +39,7 @@ body {
   color: var(--color-text);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  padding-bottom: var(--bottombar-height);
 }
 
 img {

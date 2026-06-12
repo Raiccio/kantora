@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import TopBar from '../components/TopBar.astro';
+import BottomBar from '../components/BottomBar.astro';
 
 export interface Props {
   title: string;
@@ -82,6 +84,8 @@ const ogImage = 'https://georgiev.netlify.app/favicon.svg';
   })} />
 </head>
 <body>
+  <TopBar />
   <slot />
+  <BottomBar />
 </body>
 </html>
