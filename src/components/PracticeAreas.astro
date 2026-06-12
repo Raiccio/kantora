@@ -1,0 +1,120 @@
+---
+const areas = [
+  {
+    title: 'Административно право',
+    desc: 'Помогаме ви при обжалване на административни актове, наказателни постановления и разрешителни режими пред държавни органи и съд.',
+  },
+  {
+    title: 'Семейно право',
+    desc: 'Консултираме и представляваме при бракоразводни дела, спорове за родителски права, издръжка и подялба на имущество.',
+  },
+  {
+    title: 'Вещно право',
+    desc: 'Уреждаме сделки с недвижими имоти, искове за собственост, ревандикация, делби и сервитути с внимание към всеки детайл.',
+  },
+  {
+    title: 'Наследствено право',
+    desc: 'Подготвяме завещания, наследствени отказа, провеждаме дела за делба и ви съдействаме за наследствени прехвърляния.',
+  },
+  {
+    title: 'Търговско право',
+    desc: 'Обслужваме фирми при регистрации, пререгистрации, търговски сделки, несъстоятелност и ликвидация.',
+  },
+  {
+    title: 'Дружествено право',
+    desc: 'Съдействаме при учредяване на дружества, промени в управителните органи, прехвърляне на дялове и акции.',
+  },
+  {
+    title: 'Договорно право',
+    desc: 'Изготвяме и преглеждаме договори за покупко-продажба, наем, заем, изработка и всички видове граждански договори.',
+  },
+  {
+    title: 'Трудово право',
+    desc: 'Защитаваме правата ви при трудови спорове, дисциплинарни уволнения, неизплатени трудови възнаграждения и осигуровки.',
+  },
+  {
+    title: 'Гражданско право',
+    desc: 'Водим обезщетителни искове, дела за неоснователно обогатяване, защита на собствеността и облигационни спорове.',
+  },
+];
+---
+
+<section class="section practice" id="practice">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Практики</h2>
+      <div class="gold-accent"></div>
+      <p class="section-subtitle">
+        Предлагаме широк спектър от правни услуги във всички основни области на правото
+      </p>
+    </div>
+    <div class="practice-grid">
+      {areas.map((area) => (
+        <div class="practice-card">
+          <h3 class="practice-card-title">{area.title}</h3>
+          <p class="practice-card-desc">{area.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .practice {
+    background: var(--color-cream);
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .practice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .practice-card {
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-cream-dark);
+    transition: all 0.3s ease;
+  }
+
+  .practice-card:hover {
+    border-color: var(--color-gold);
+    box-shadow: 0 4px 20px rgba(201, 168, 76, 0.15);
+    transform: translateY(-3px);
+  }
+
+  .practice-card-title {
+    font-size: 1.125rem;
+    color: var(--color-navy);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-gold);
+  }
+
+  .practice-card-desc {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  @media (max-width: 1024px) {
+    .practice-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .practice-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .practice-card {
+      padding: 1.5rem;
+    }
+  }
+</style>

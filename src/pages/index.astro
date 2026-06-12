@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import PracticeAreas from '../components/PracticeAreas.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Адвокатска кантора Пловдив"
+  description="Адвокатско съдружие 'Георгиев и Зънгарова' – Пловдив. Процесуално представителство, сделки с недвижими имоти, обжалване на наказателни постановления. Свържете се: 0894 392 323."
+  canonical="https://kantora.netlify.app/"
+>
+  <Nav />
+  <main>
+    <Hero />
+    <About />
+    <PracticeAreas />
+    <Contact />
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,87 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogType?: string;
+  articleBody?: string;
+}
+
+const {
+  title,
+  description,
+  canonical = 'https://kantora.netlify.app',
+  ogType = 'website',
+} = Astro.props;
+
+const siteName = 'Адвокатско съдружие "Георгиев и Зънгарова"';
+const fullTitle = `${title} | ${siteName}`;
+const ogImage = 'https://kantora.netlify.app/favicon.svg';
+---
+
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href={canonical} />
+
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content={siteName} />
+  <meta property="og:locale" content="bg_BG" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=PT+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": siteName,
+    "description": description,
+    "url": canonical,
+    "telephone": "+359894392323",
+    "email": "advokat_georgiev@abv.bg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Сливница № 6а, ет.5, офис 9",
+      "addressLocality": "Пловдив",
+      "addressRegion": "Пловдив",
+      "postalCode": "4000",
+      "addressCountry": "BG"
+    },
+    "image": ogImage,
+    "priceRange": "$$",
+    "areaServed": "Пловдив, България",
+    "serviceType": [
+      "Административно право",
+      "Семейно право",
+      "Вещно право",
+      "Наследствено право",
+      "Търговско право",
+      "Дружествено право",
+      "Договорно право",
+      "Трудово право",
+      "Гражданско право"
+    ]
+  })} />
+</head>
+<body>
+  <slot />
+</body>
+</html>

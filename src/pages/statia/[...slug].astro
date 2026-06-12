@@ -1,0 +1,116 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await article.render();
+---
+
+<BaseLayout
+  title={article.data.title}
+  description={article.data.description}
+  canonical={`https://kantora.netlify.app/statia/${article.slug}/`}
+  ogType="article"
+>
+  <header class="article-header">
+    <div class="container">
+      <a href="/" class="back-link">&larr; Към началната страница</a>
+      <h1 class="article-title">{article.data.title}</h1>
+      <p class="article-meta">
+        Публикувано на {new Date(article.data.pubDate).toLocaleDateString('bg-BG', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })}
+      </p>
+    </div>
+  </header>
+  <main class="article-body container">
+    <Content />
+  </main>
+  <footer class="article-footer">
+    <div class="container">
+      <a href="/#contact" class="btn btn-primary">Свържете се с нас</a>
+    </div>
+  </footer>
+</BaseLayout>
+
+<style>
+  .article-header {
+    background: var(--color-navy);
+    color: var(--color-white);
+    padding: 6rem 1.5rem 3rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    color: var(--color-gold);
+    font-size: 0.9375rem;
+    margin-bottom: 2rem;
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    color: var(--color-gold-light);
+  }
+
+  .article-title {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    max-width: 800px;
+  }
+
+  .article-meta {
+    font-size: 0.875rem;
+    color: var(--color-cream);
+    opacity: 0.7;
+    margin-top: 1rem;
+  }
+
+  .article-body {
+    padding: 3rem 1.5rem 2rem;
+    max-width: 800px;
+    font-size: 1.0625rem;
+    line-height: 1.8;
+  }
+
+  .article-body h2 {
+    font-size: 1.5rem;
+    color: var(--color-navy);
+    margin: 2.5rem 0 1rem;
+  }
+
+  .article-body h3 {
+    font-size: 1.25rem;
+    color: var(--color-navy);
+    margin: 2rem 0 0.75rem;
+  }
+
+  .article-body p {
+    margin-bottom: 1.25rem;
+  }
+
+  .article-body ul {
+    margin: 1rem 0 1.5rem 1.5rem;
+  }
+
+  .article-body li {
+    margin-bottom: 0.5rem;
+  }
+
+  .article-body strong {
+    color: var(--color-navy);
+  }
+
+  .article-footer {
+    padding: 2rem 1.5rem 4rem;
+    text-align: center;
+  }
+</style>

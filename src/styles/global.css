@@ -1,0 +1,134 @@
+:root {
+  --color-navy: #1B2A4A;
+  --color-navy-light: #2C4068;
+  --color-navy-dark: #111D36;
+  --color-gold: #C9A84C;
+  --color-gold-light: #DFC36A;
+  --color-gold-dark: #A8882E;
+  --color-cream: #F5F0E8;
+  --color-cream-dark: #E8E0D0;
+  --color-white: #FFFFFF;
+  --color-text: #2C2C2C;
+  --color-text-light: #6B7280;
+
+  --font-heading: 'PT Serif', Georgia, serif;
+  --font-body: 'PT Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --max-width: 1200px;
+  --nav-height: 64px;
+  --section-padding: 5rem 1.5rem;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-gold-dark);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--color-gold);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.section {
+  padding: var(--section-padding);
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 0.5rem;
+  color: var(--color-navy);
+}
+
+.section-subtitle {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  color: var(--color-text-light);
+  margin-bottom: 3rem;
+  max-width: 600px;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.gold-accent {
+  width: 60px;
+  height: 3px;
+  background: var(--color-gold);
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--color-gold);
+  color: var(--color-navy-dark);
+  border-color: var(--color-gold);
+}
+
+.btn-primary:hover {
+  background: var(--color-gold-light);
+  border-color: var(--color-gold-light);
+  color: var(--color-navy-dark);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.btn-outline:hover {
+  background: var(--color-white);
+  color: var(--color-navy);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 3rem 1.25rem;
+  }
+}
