@@ -14,7 +14,7 @@ const latest = articles[0];
       <p class="section-subtitle">Полезни статии и правни анализи от нашия екип</p>
     </div>
     {latest ? (
-      <a href={`/statia/${latest.slug}/`} class="featured-card">
+      <a href={`/blog/${latest.slug}/`} class="featured-card">
         <span class="featured-badge">Полезна статия</span>
         <h3 class="featured-title">{latest.data.title}</h3>
         <p class="featured-desc">{latest.data.description}</p>
