@@ -30,6 +30,7 @@ const latest = articles[0];
     ) : (
       <p class="featured-empty">Няма публикувани статии все още.</p>
     )}
+    <a href="/blog/" class="blog-all-link">Всички статии &rarr;</a>
   </div>
 </section>
 
@@ -114,5 +115,19 @@ const latest = articles[0];
   .featured-empty {
     color: var(--color-cream);
     opacity: 0.6;
+  }
+
+  .blog-all-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: var(--color-gold);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: color 0.2s;
+  }
+
+  .blog-all-link:hover {
+    color: var(--color-gold-light);
   }
 </style>
